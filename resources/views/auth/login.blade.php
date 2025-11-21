@@ -1,73 +1,125 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ __('Admin Login') }}</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="{{ asset('backend/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('backend/bower_components/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{ asset('backend/bower_components/Ionicons/css/ionicons.min.css') }}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('backend/dist/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('backend/dist/css/shiplo.css') }}">
+        <!-- iCheck -->
+        <link rel="stylesheet" href="{{ asset('backend/plugins/iCheck/square/blue.css') }}">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    </head>
+    <body class="hold-transition login-page">
+        
+        <section class="LoginBg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 force_mar">
+                        <div class="content_Foinny">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="Login_form">
+                                        <div class="Heading text-center">
+                                            <h3>{{ __('HRM & Payroll') }} <span>{{ __('Soft. V3.0') }}</span></h3>
+                                        </div>
+                                        <form action="{{ route('login') }}" method="post">
+                                            {{ csrf_field() }}
+                                            <div class="form-group">
+                                                <div class="over_box">
+                                                    <label for="InputEmail1" class="Label{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">{{ __('Email Address') }}</label>
+                                                    <input type="email" name="email" value="admin@mail.com" class="Input" id="" aria-describedby="emailHelp">
+                                                    @if ($errors->has('email'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                    <div class="SideIcon"><img class="img-fluid" src="{{ asset('images/userLoginIcon01.png') }}" alt="Email Icon"></div>
+                                                </div>
+                                              
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="over_box">
+                                                    <label for="InputPassword" class="{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">{{ __('Password') }}</label>
+                                                    <input type="password" name="password"  value="password" class="Input" id="">
+                                                    @if ($errors->has('password'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                    <div class="SideIcon"><img src="{{asset('images/userLoginIcon02.png')}}" alt="Password Icon"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group Buttons text-center">
+                                                <button type="submit" class="btn Admin">{{__('Admin Login')}}</button>
+                                            </div>
+                                        </form>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                                        <form action="{{ route('login') }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="email" value="wali@gmail.com" class="Input" id="" aria-describedby="emailHelp">
+                                            @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                            @endif
+                                            <input type="hidden" name="password"  value="demo" class="Input" id="">
+                                            
+                                            @if ($errors->has('password'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                            @endif
+                                            <div class="form-group Buttons text-center">
+                                                <button type="submit" class="btn Employee">{{__('Employee Login')}}</button>
+                                            </div>
+                                        </form>
+                                        <div class="JoinUs">
+                                            <p>{{__('Follow us')}}</p>
+                                            <a class="share_link facebook text-center" href="#"><i class="fab fa-facebook-f"></i></a><a class="share_link twitter text-center" href="#"><i class="fab fa-twitter"></i></a><a class="share_link linkin text-center" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="Right_side">
+                                        <div class="SoftWare_name m-auto text-center">
+                                            <img class="img-fluid" src="{{asset('images/Vector-Image.png')}}" alt="Software Image">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</div>
-@endsection
+    <!-- /.login-box -->
+    <!-- jQuery 3 -->
+    <script src="{{ asset('backend/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="{{ asset('backend/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('backend/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+    $(function () {
+    $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '20%' // optional
+    });
+    });
+    </script>
+</body>
+</html>
